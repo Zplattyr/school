@@ -2,8 +2,8 @@ const delay = ms => {
   return new Promise(r => setTimeout(() => r(), ms))
 }
 
-const url_v = 'https://api.github.com/repos/Zplattyr/demo/contents/db.json'
-const url_v_d = 'https://api.github.com/repos/Zplattyr/demo/contents/db.json'
+const url_v = 'https://api.github.com/repos/Zplattyr/lessons/contents/db.json'
+const url_v_d = 'https://api.github.com/repos/Zplattyr/lessons/contents/db.json'
 const url_c = 'https://api.github.com/repos/Zplattyr/command/contents/db.json'
 
 var final = ''
@@ -13,8 +13,8 @@ async function read_2(url) {
         const data = await response.json()
         console.log(data.content)
         if (data.content == ""){
-          console.log('waiting...')
-          await delay(10000)
+          console.log('не стоит вскрывать эту тему...')
+          await delay(5000)
           await read_2(url)
         }
         console.log(data)
@@ -32,12 +32,12 @@ async function read(url) {
 }
 
 async function write_command(sha) {
-  path = 'C:\\Users\\aleks\\youtube\\run.bat'
+  path = 'C:\\Users\\aleks\\school\\run.bat'
   json = {
         "message": "new command",
         "content": btoa(unescape(encodeURIComponent(path))),
         'sha': sha,
-    }
+  }
   const response = await fetch(url_c,{
     method: 'PUT',
     mode: 'cors',
@@ -52,10 +52,10 @@ async function write_command(sha) {
   console.log(data)
 }
 
-var ssylka = document.querySelector('.ssylka')
-  ssylka.addEventListener('click', async function(evt) {
+var listener = async function(evt) {
+    console.log("миша не смотри пж")
+    ssylka.removeEventListener('click', listener)
     var table = document.querySelector('.table');
-
     try {
       table.classList.remove('visible')
       await delay(200)
@@ -66,8 +66,10 @@ var ssylka = document.querySelector('.ssylka')
     var row = table.insertRow(0);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
-    cell1.innerHTML = "Название";
-    cell2.innerHTML = "Канал";
+    var cell3 = row.insertCell(2);
+    cell1.innerHTML = "Учитель";
+    cell2.innerHTML = "Урок";
+    cell3.innerHTML = "ДЗ";
 
     var data = await read(url_v_d)
     var sha = data.sha
@@ -92,8 +94,7 @@ var ssylka = document.querySelector('.ssylka')
     var sha = data.sha
     await write_command(sha)
 
-    await delay(20000)
-
+    await delay(25000)
     var data = await read_2(url_v)
     var data = final
     console.log(data)
@@ -101,22 +102,32 @@ var ssylka = document.querySelector('.ssylka')
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
     var data = JSON.parse(data)
-    var data = data.videos
+    var data = data.lessons
     console.log(data)
-
+    var counter = 1
     function bbb(i) {
-      var row = table.insertRow(data[i].id);
+      var row = table.insertRow(counter);
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
-      cell1.innerHTML = "<a href='" + data[i].link+ "' target='_blank' class='name'>" + data[i].name + "<a>";
-      cell2.innerHTML = data[i].author;
+      var cell3 = row.insertCell(2);
+      cell1.innerHTML = data[i].lesson;
+      cell2.innerHTML = data[i].teacher;
+      cell3.innerHTML = data[i].homework;
+      counter++
     }
-    try{
-        for(var i=0;i<20;i++){
-          bbb(i)
+
+try{
+        for(var i=0;i<100;i++){
+          if (data[i].homework != 'Не задано ' && data[i].homework != 'без задания ' && (i != 0 && data[i].homework != data[i-1].homework) || i == 0) {bbb(i)}
         }
-    } catch {}
+} catch {}
+
+
     await delay(200)
     table.classList.add('visible')
+    ssylka.addEventListener('click', listener)
+    console.log("С тобой невыносимо. Ты жалок. Почему ты не сдаешься? Твоя жизнь отвратительна, ты хочешь что-то изменить? Дай мне верх над собой, я лучше знаю, что делать. Не забывай, ты сам создал меня. Почему ты продолжаешь это делать? Что с тобой не так? Ты и правда надеешься на лучшее? Ты - худшее, что есть в этом человеке. Перестань. Чего ты боишься? Сойти с ума? Ты уже со мной разговариваешь. Ты слушаешь монолог самого себя. Так почему ты не хочешь, чтобы твоя рациональная часть взяла верх? Уничтожь себя! Давай! Уничтожь себя! Уничтожь")
+}
 
-});
+var ssylka = document.querySelector('.ssylka')
+ssylka.addEventListener('click', listener)

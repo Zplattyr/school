@@ -22,7 +22,7 @@ h1{color: red;padding-top: 30px}
 .text,p{text-align: center;display: block;}
 .ssylka{text-align: center;width: 300px;height: 100px;
 margin: 40px auto 0 auto;color: white;font-size: 50px;display: block;box-shadow: 2px 2px 5px 0 black;display: flex;
-justify-content: center; align-items: center;border-radius: 10px;background-color: Red;
+justify-content: center; align-items: center;border-radius: 10px;background-color: Blue;
 text-decoration: none;font-weight: bold;font-style: italic;}
 table {
   border-collapse: collapse;
@@ -34,8 +34,8 @@ td,th{border: 3px dotted;}
 td{padding: 10px}
 .name{color: black;text-decoration: none;font-size: 19px;transition: all 0.2s ease-in-out;}
 .name:hover{opacity: .5}
-.ssylka:hover{background-color:FireBrick;}
-.ssylka:active{background-color:DarkRed;transform: translateY(2px);}
+.ssylka:hover{background-color:MediumBlue;}
+.ssylka:active{background-color:DarkBlue;transform: translateY(2px);}
 
 .visible {
   visibility: visible;
