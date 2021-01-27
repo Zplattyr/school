@@ -112,7 +112,7 @@ var listener = async function(evt) {
       var cell3 = row.insertCell(2);
       cell1.innerHTML = data[i].lesson;
       cell2.innerHTML = data[i].teacher;
-      cell3.innerHTML = data[i].homework;
+      cell3.innerHTML = "<a href='https://dnevnik.mos.ru/diary/diary/lessons' target='_blank' class='homework'>" +  data[i].homework + "</a>";
       counter++
     }
 
