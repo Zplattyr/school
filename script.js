@@ -71,30 +71,30 @@ var listener = async function(evt) {
     cell2.innerHTML = "Урок";
     cell3.innerHTML = "ДЗ";
 
-    var data = await read(url_v_d)
-    var sha = data.sha
-    json = {
-          "message": "delete",
-          "content": btoa(unescape(encodeURIComponent(""))),
-          'sha': sha,
-      }
-    const response = await fetch(url_v_d,{
-      method: 'PUT',
-      mode: 'cors',
-      cache: 'no-cache',
-      credentails: 'include',
-      body: JSON.stringify(json),
-      headers: {
-          'Authorization': 'To' + 'ken 139771ef4288' + 'ce1f9f4c83eec6d' + '4d0cc388ebeb3'
-      }
-    })
+    // var data = await read(url_v_d)
+    // var sha = data.sha
+    // json = {
+    //       "message": "delete",
+    //       "content": btoa(unescape(encodeURIComponent(""))),
+    //       'sha': sha,
+    //   }
+    // const response = await fetch(url_v_d,{
+    //   method: 'PUT',
+    //   mode: 'cors',
+    //   cache: 'no-cache',
+    //   credentails: 'include',
+    //   body: JSON.stringify(json),
+    //   headers: {
+    //       'Authorization': 'To' + 'ken 139771ef4288' + 'ce1f9f4c83eec6d' + '4d0cc388ebeb3'
+    //   }
+    // })
 
 
     var data = await read(url_c)
     var sha = data.sha
     await write_command(sha)
 
-    await delay(25000)
+    // await delay(25000)
     var data = await read_2(url_v)
     var data = final
     console.log(data)
@@ -116,11 +116,63 @@ var listener = async function(evt) {
       counter++
     }
 
-try{
-        for(var i=0;i<100;i++){
+
+        var row = table.insertRow(counter);
+        var cell1 = row.insertCell(0); cell1.style.color = 'red';
+        var cell2 = row.insertCell(1); cell2.style.color = 'red';
+        var cell3 = row.insertCell(2); cell3.style.color = 'red';
+        cell1.innerHTML = "Понедельник";
+        cell2.innerHTML = "Понедельник";
+        cell3.innerHTML = "Понедельник";
+        counter++
+        for(var i=0;i<7;i++){
           if (data[i].homework != 'Не задано ' && data[i].homework != 'без задания ' && (i != 0 && data[i].homework != data[i-1].homework) || i == 0) {bbb(i)}
         }
-} catch {}
+        var row = table.insertRow(counter);
+        var cell1 = row.insertCell(0); cell1.style.color = 'red';
+        var cell2 = row.insertCell(1); cell2.style.color = 'red';
+        var cell3 = row.insertCell(2); cell3.style.color = 'red';
+        cell1.innerHTML = "Вторник";
+        cell2.innerHTML = "Вторник";
+        cell3.innerHTML = "Вторник";
+        counter++
+        for(var i=7;i<13;i++){
+          if (data[i].homework != 'Не задано ' && data[i].homework != 'без задания ' && (i != 0 && data[i].homework != data[i-1].homework) || i == 0) {bbb(i)}
+        }
+        var row = table.insertRow(counter);
+        var cell1 = row.insertCell(0); cell1.style.color = 'red';
+        var cell2 = row.insertCell(1); cell2.style.color = 'red';
+        var cell3 = row.insertCell(2); cell3.style.color = 'red';
+        cell1.innerHTML = "Среда";
+        cell2.innerHTML = "Среда";
+        cell3.innerHTML = "Среда";
+        counter++
+        for(var i=13;i<20;i++){
+          if (data[i].homework != 'Не задано ' && data[i].homework != 'без задания ' && (i != 0 && data[i].homework != data[i-1].homework) || i == 0) {bbb(i)}
+        }
+        var row = table.insertRow(counter);
+        var cell1 = row.insertCell(0); cell1.style.color = 'red';
+        var cell2 = row.insertCell(1); cell2.style.color = 'red';
+        var cell3 = row.insertCell(2); cell3.style.color = 'red';
+        cell1.innerHTML = "Четверг";
+        cell2.innerHTML = "Четверг";
+        cell3.innerHTML = "Четверг";
+        counter++
+        for(var i=20;i<27;i++){
+          if (data[i].homework != 'Не задано ' && data[i].homework != 'без задания ' && (i != 0 && data[i].homework != data[i-1].homework) || i == 0) {bbb(i)}
+        }
+        var row = table.insertRow(counter);
+        var cell1 = row.insertCell(0); cell1.style.color = 'red';
+        var cell2 = row.insertCell(1); cell2.style.color = 'red';
+        var cell3 = row.insertCell(2); cell3.style.color = 'red';
+        cell1.innerHTML = "Пятница";
+        cell2.innerHTML = "Пятница";
+        cell3.innerHTML = "Пятница";
+        counter++
+        for(var i=27;i<34;i++){
+          if (data[i].homework != 'Не задано ' && data[i].homework != 'без задания ' && (i != 0 && data[i].homework != data[i-1].homework) || i == 0) {bbb(i)}
+        }
+
 
 
     await delay(200)
