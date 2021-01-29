@@ -67,7 +67,7 @@ var listener = async function(evt) {
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
-    cell1.innerHTML = "Учитель";
+    cell1.innerHTML = "Время";
     cell2.innerHTML = "Урок";
     cell3.innerHTML = "ДЗ";
 
@@ -110,8 +110,8 @@ var listener = async function(evt) {
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
       var cell3 = row.insertCell(2);
-      cell1.innerHTML = data[i].lesson;
-      cell2.innerHTML = data[i].teacher;
+      cell1.innerHTML = data[i].time;
+      cell2.innerHTML = data[i].lesson;
       cell3.innerHTML = "<a href='https://dnevnik.mos.ru/diary/diary/lessons' target='_blank' class='homework'>" +  data[i].homework + "</a>";
       counter++
     }
