@@ -116,7 +116,7 @@ var listener = async function(evt) {
       counter++
     }
 
-
+try{
         var row = table.insertRow(counter);
         var cell1 = row.insertCell(0); cell1.style.color = 'red';
         var cell2 = row.insertCell(1); cell2.style.color = 'red';
@@ -172,6 +172,7 @@ var listener = async function(evt) {
         for(var i=27;i<34;i++){
           if (data[i].homework != 'Не задано ' && data[i].homework != 'без задания ' && (i != 0 && data[i].homework != data[i-1].homework) || i == 0) {bbb(i)}
         }
+} catch {}
 
         var row = table.insertRow(counter);
         var cell1 = row.insertCell(0); cell1.style.color = 'orange';
@@ -182,7 +183,7 @@ var listener = async function(evt) {
         cell3.innerHTML = "Новая неделя";
         counter++
 
-
+try{
         var row = table.insertRow(counter);
         var cell1 = row.insertCell(0); cell1.style.color = 'red';
         var cell2 = row.insertCell(1); cell2.style.color = 'red';
@@ -238,7 +239,7 @@ var listener = async function(evt) {
         for(var i=61;i<68;i++){
           if (data[i].homework != 'Не задано ' && data[i].homework != 'без задания ' && (i != 0 && data[i].homework != data[i-1].homework) || i == 0) {bbb(i)}
         }
-
+} catch {}
 
 
     await delay(200)
